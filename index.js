@@ -7,13 +7,13 @@ const fs = require("fs");
 const port = process.env.PORT || 3000;
 
 app.engine(
-  "hbs",
-  hbs({
-    extname: "hbs",
-    defaultLayout: "layout",
-    layoutsDir: __dirname + "/views/layouts/",
-    partialsDir: __dirname + "/views/partials/",
-  })
+	"hbs",
+	hbs({
+		extname: "hbs",
+		defaultLayout: "layout",
+		layoutsDir: __dirname + "/views/layouts/",
+		partialsDir: __dirname + "/views/partials/",
+	})
 );
 
 app.set("view engine", "hbs");
@@ -26,29 +26,40 @@ hbsController.handlebars.registerHelper("if_even", function (num) {
 app.use(express.static(path.join(__dirname, "./public")));
 
 app.get("/", (req, res) => {
-  fs.readFile("index.html", (err, data) => {
-    res.statusCode = 200;
-    res.setHeader("content-type", "text/html");
-    res.send(data);
-  });
+	fs.readFile("index.html", (err, data) => {
+		res.statusCode = 200;
+		res.setHeader("content-type", "text/html");
+		res.send(data);
+	});
 });
 
 app.get("/index.html", (req, res) => {
-  fs.readFile("index.html", (err, data) => {
-    res.statusCode = 200;
-    res.setHeader("content-type", "text/html");
-    res.send(data);
-  });
+	fs.readFile("index.html", (err, data) => {
+		res.statusCode = 200;
+		res.setHeader("content-type", "text/html");
+		res.send(data);
+	});
 });
 
+app.get("/featured.html", (req, res) =>{
+	let id = parseInt(req.query["id"]);
+	let featuredController = require("./controllers/featuredController")
+	featuredController.getAll().then((recipeData, ingredientsData) => {
+		res.locals.data = recipeData;
+		res.render("featured");
+		res.locals.data = ingredientsData;
+		res.render("featured")
+	})
+})
+
 app.get("/recipes", (req, res) => {
-  let recipeController = require("./controllers/recipeController");
-  recipeController.getAll().then((data) => {
-    res.locals.data = data;
-    res.render("recipe");
-  });
+	let recipeController = require("./controllers/recipeController");
+	recipeController.getAll().then((data) => {
+	  res.locals.data = data;
+	  res.render("recipe");
+	});
 });
 
 app.listen(port, () => {
-  console.log(`Listening at port:${port}`);
+	console.log(`Listening at port:${port}`);
 });
