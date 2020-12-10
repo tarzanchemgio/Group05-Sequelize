@@ -35,3 +35,7 @@ app.get("/index.html", (req, res) => {
 		res.send(data);
 	});
 });
+
+app.listen(port, () => {
+	console.log(`Listening at port:${port}`);
+});
