@@ -1,0 +1,67 @@
+<div id="dropdown-sort">
+    <div>
+        <form action="" id="sort-form">
+            <label for="sort">Sort: </label>
+            <select name="sort" id="sort-select" onchange="sortItem(this)">
+                <option value="ascending">Ascending</option>
+                <option value="descending">Descending</option>
+            </select>
+            <br /><br />
+
+            <!-- <input type="submit" value="Submit" /> -->
+        </form>
+    </div>
+</div>
+
+
+<div class="body">
+
+    <div id="content">
+        <div>
+            <ul>
+                {{#each data}}
+                {{#if (if_even @index)}}
+                <li>
+                    <a href="index.html"><img src="{{dataValues.smallImagePath}}" alt="Image" /></a>
+                    <div>
+                        <h3><a href="featured.html">{{dataValues.title}}</a></h3>
+                        <p>
+                            This website template has been designed by
+                            <a href="http://www.freewebsitetemplates.com/">Free Website Templates</a>
+                            for you, for free. You can replace all this text with your own text. You
+                            can remove any link to our website from this website template, you&#39;re
+                            free to use this website template without linking back to us. If
+                            you&#39;re having problems editing this website template, then don&#39;t
+                            hesitate to ask for help on the
+                            <a href="http://www.freewebsitetemplates.com/forums/">Forums</a>.
+                        </p>
+                    </div>
+                </li>
+                {{else}}
+                <li>
+                    <a href="index.html"><img src="{{dataValues.smallImagePath}}" alt="Image" /></a>
+                    <div>
+                        <h3><a href="featured.html">{{dataValues.title}}</a></h3>
+                        <div>
+                            <p>
+                                This is just a place holder, so you can see what the site would look
+                                like. This is just a place holder, so you can see what the site would
+                                look like.
+                            </p>
+                            <ul>
+                                <li>This is just a place holder</li>
+                                <li>This is just a place holder</li>
+                                <li>This is just a place holder</li>
+                                <li>This is just a place holder</li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+                {{/if}}
+                {{/each}}
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script src="/scripts/sort.js"></script>
