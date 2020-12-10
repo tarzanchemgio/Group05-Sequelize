@@ -1,0 +1,7 @@
+Group 05:
+Đinh Hoàng Dương - 18127084 - Sort
+Khưu Vĩ Luân - 18127146 - Feature
+Dương Tấn Phát - 18127175 - A to Z
+
+GitHub: https://github.com/tarzanchemgio/Group05-Sequelize
+Heroku: https://group05-sequelize.herokuapp.com/
